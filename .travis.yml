@@ -1,0 +1,32 @@
+language: node_js
+
+cache:
+  directories:
+    - node_modules
+    - ~/.npm
+
+node_js:
+  - '12'
+
+git:
+  depth: 3
+
+script:
+  - yarn test
+
+notifications:
+  slack: localmeetups-co:bWdsTuBA47ug9BOEJrY2HwNM
+  email:
+    recipients:
+      - ala1289@gmail.com
+    on_success: always
+    on_failure: always
+
+deploy:
+  provide: heroku
+  skip_cleanup: true
+  keep_history: true
+  api_key: 64ed3d11-f470-4cf5-addd-62f5ca793701 # desde heroku
+  app: backend-store-platzi
+  on:
+    repo: ealexisaraujo/cursoTravisBackend
